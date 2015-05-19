@@ -25,13 +25,13 @@ require 'rainbow'
 require 'pry'
 
 def main_menu
-  puts "[q] - quit"
   puts "[a] - addition"
   puts "[s] - subtraction"
   puts "[x] - multiply"
   puts "[d] - divide"
   puts "[p] - power of"
   puts "[sq] - square root"
+  puts "[q] - quit"
 end
 
 def fetch_input(prompt)
