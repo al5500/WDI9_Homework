@@ -1,0 +1,20 @@
+
+<h1>Movie Finder</h1>
+
+<form action="/movies">
+  <label for="title">Search for a desired film:</label>
+  <input type="text" name="title" id="title" placeholder="Please enter a movie...">
+  <button>Get Movie!</button>
+</form>
+ 
+ <% @movie_data.each_with_index do |movie| %> 
+ <% movie[1].each_with_index do |something| %> 
+<li><a href="http://google.com"><%= something[1] %></a> </li>
+<li><%= something[1] %></li>
+<%end%>
+<%end%>
+
+
+
+
+<!-- ..@movie_names.each_with_index do |movie ,index| puts " #{index} #{ movie} " end -->

@@ -1,0 +1,22 @@
+<!-- <% @movie_data.each_with_index do |movie| %>  -->
+<!-- <% @movie_data[1].each_with_index do |something| %>  -->
+<!-- <li><a href="<%= @something['imdbID'] %>"><%= something['Title'] %></a> </li> -->
+
+<!-- <%end%> -->
+<!-- <%end%> -->
+<br>
+<img src=<%= @movie_data['Poster'] %> >
+
+<a href="<%= something['imdbID'] %>"><%= something['Title'] %></a>
+
+<% movie[1].each_with_index do |something| %> 
+  <li> <%= something['Title'] %> </li>
+
+<%end%>
+
+
+
+<% @movie_data[0][1].each do |details| %>
+  
+    <%= details %>
+  <%end%>

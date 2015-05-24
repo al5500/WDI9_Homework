@@ -50,17 +50,17 @@ var totalStops;
 
 //takes the departure line and stop,  arrival line and stop 
 // and dispays where u left from, your stops in between and if you have to change at union square
-var tripPlanner = function (departLine, departStop, arriveLine, arriveStop) {
+var tripPlanner = function(departLine, departStop, arriveLine, arriveStop) {
   totalStops = 0;
   //
   // if the start and stop station are on the same line then we can find the stops from the array
   // otherwise we have to break our journey at union square and change lines. 
   //
-  if(departLine === arriveLine){ 
-  var allStations = linePlanner(departLine, departStop, arriveStop);
-  console.log('You are leaving ' + departStop + ' and are going through ' + allStations + ' and arriving at ' + arriveStop ); // tells you where u left where u went through and where you arrived.
+  if (departLine === arriveLine) {
+    var allStations = linePlanner(departLine, departStop, arriveStop);
+    console.log('You are leaving ' + departStop + ' and are going through ' + allStations + ' and arriving at ' + arriveStop); // tells you where u left where u went through and where you arrived.
 
-  } else{
+  } else {
     //
     // we have to break the journey at union square
     // first get the departure line information
@@ -69,61 +69,62 @@ var tripPlanner = function (departLine, departStop, arriveLine, arriveStop) {
     var allStations = linePlanner(departLine, departStop, 'Union Square');
     console.log('You are leaving ' + departStop + ' going through ' + allStations + ' Union Square.');
     console.log('Change at Union Square to the ' + arriveLine);
-    totalStops ++;//this adds one to the total stops because it doesn't include the last stop
+    totalStops++; //this adds one to the total stops because it doesn't include the last stop
     var allStations = linePlanner(arriveLine, 'Union Square', arriveStop);
     console.log('Your journey continues through the following stops:' + allStations + ' and arriving at ' + arriveStop);
- 
+
   }
-   console.log('The number of stops is: ' + (totalStops +1));
+  console.log('The number of stops is: ' + (totalStops + 1));
 };
 
 //
 // Find the stations in between two stops in the right order
 //
-var linePlanner = function (departLine, departStop, arriveStop){ 
-  var lineArray = getLineArray(departLine); 
-  var dsIndex = findIndex(departStop, lineArray); 
-  var asIndex = findIndex(arriveStop, lineArray);
-  var allStations = ""; //empty var to store the stations it iterates through
-  //
-  // if the depart stop is less than the arrive stop index (which means you are going forward)
-  // get the stations in between
-  // and count the number of stops (note we ignore the last stop)
-  //
-  if (dsIndex < asIndex) {
-  for (var x = dsIndex + 1; x <  asIndex ; x ++) { 
-    allStations += " " + lineArray[x];
-    totalStops ++;
+var linePlanner = function(departLine, departStop, arriveStop) {
+    var lineArray = getLineArray(departLine);
+    var dsIndex = findIndex(departStop, lineArray);
+    var asIndex = findIndex(arriveStop, lineArray);
+    var allStations = ""; //empty var to store the stations it iterates through
+    //
+    // if the depart stop is less than the arrive stop index (which means you are going forward)
+    // get the stations in between
+    // and count the number of stops (note we ignore the last stop)
+    //
+    if (dsIndex < asIndex) {
+      for (var x = dsIndex + 1; x < asIndex; x++) {
+        allStations += " " + lineArray[x];
+        totalStops++;
+      }
     }
-  }
-  //
-  // if the depart stop is greayer than the arrive stop index (which means you are going backwards)
-  // get the stations in between
-  // and count the number of stops (note we ignore the last stop)
-  //
-  if(dsIndex > asIndex) {
-  for(var x = dsIndex -1; x > asIndex; x --){
-    allStations += ' ' + lineArray[x];
-    totalStops ++;
+    //
+    // if the depart stop is greayer than the arrive stop index (which means you are going backwards)
+    // get the stations in between
+    // and count the number of stops (note we ignore the last stop)
+    //
+    if (dsIndex > asIndex) {
+      for (var x = dsIndex - 1; x > asIndex; x--) {
+        allStations += ' ' + lineArray[x];
+        totalStops++;
+      }
     }
-  } return allStations;
+    return allStations;
 
-}
-//
-// Returns the index value of the station withing the line array
-//
-var findIndex = function (station, line) { 
-  for (var i = 0; i < line.length; i++) {
-    if(line[i] === station){
-      return i;
+  }
+  //
+  // Returns the index value of the station withing the line array
+  //
+var findIndex = function(station, line) {
+    for (var i = 0; i < line.length; i++) {
+      if (line[i] === station) {
+        return i;
+      }
     }
   }
-}
-//
-// The returns the line station array given the name of the line
-//
-var getLineArray = function (lineName) {
-  switch(lineName){
+  //
+  // The returns the line station array given the name of the line
+  //
+var getLineArray = function(lineName) {
+  switch (lineName) {
     case 'N':
       return nLine;
     case 'L':
@@ -133,21 +134,3 @@ var getLineArray = function (lineName) {
   }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
