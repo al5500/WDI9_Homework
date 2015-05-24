@@ -1,0 +1,14 @@
+<h1>Movie Finder</h1>
+<form action="/movies" method="post" >
+  <label for="title">Search for a desired film:</label>
+  <input type="text" name="title" id="title" placeholder="Please enter a movie...">
+  <button>Get Movie!</button>
+</form>
+
+ <% @movie_data.each_with_index do |movie, index| %>
+    <% movie[1].each_with_index do |title, index1| %>
+      <li>
+        <a href="http://www.imdb.com/title/<%= title['imdbID'] %> "target='_blank'><%= title['Title'] %></a>
+      </li>
+     <% end %>
+ <% end %>
